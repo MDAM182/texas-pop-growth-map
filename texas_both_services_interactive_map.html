@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_21431c6fcd525543818169b8cfbfa35e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+<div style="
+position: fixed; 
+bottom: 50px; left: 50px; width: 220px; height: 180px; 
+background-color: white; 
+border:2px solid grey; z-index:9999; font-size:14px;
+padding: 10px;
+line-height: 20px;
+overflow: auto;
+">
+<b>Population Growth %</b><br>
+<i style="background:red;width:18px;height:18px;display:inline-block;"></i>&nbsp;Negative<br>
+<i style="background:orange;width:18px;height:18px;display:inline-block;"></i>&nbsp;0-5%<br>
+<i style="background:yellow;width:18px;height:18px;display:inline-block;"></i>&nbsp;5-10%<br>
+<i style="background:green;width:18px;height:18px;display:inline-block;"></i>&nbsp;10%+<br>
+<i style="background:gray;width:18px;height:18px;display:inline-block;"></i>&nbsp;No data
+</div>
+    <title>Texas Service Areas & Population Growth</title>
+    
+            <div class="folium-map" id="map_21431c6fcd525543818169b8cfbfa35e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_21431c6fcd525543818169b8cfbfa35e = L.map(
+                "map_21431c6fcd525543818169b8cfbfa35e",
+                {
+                    center: [31.0, -99.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0713b12453c97696f78aac6e1e8530f5 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0713b12453c97696f78aac6e1e8530f5.addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+            var circle_marker_2b17ee060498404553cba3afd05f3bb5 = L.circleMarker(
+                [32.43, -95.13],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.9, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_44046f80e9ef1277ce2eaa3ec8a57577 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8a9348e61005986e0dd4147980d122d9 = $(`<div id="html_8a9348e61005986e0dd4147980d122d9" style="width: 100.0%; height: 100.0%;">Arp Population Growth: 9.8%</div>`)[0];
+                popup_44046f80e9ef1277ce2eaa3ec8a57577.setContent(html_8a9348e61005986e0dd4147980d122d9);
+            
+        
+
+        circle_marker_2b17ee060498404553cba3afd05f3bb5.bindPopup(popup_44046f80e9ef1277ce2eaa3ec8a57577)
+        ;
+
+        
+    
+    
+            var circle_marker_b452d225a4ccb6db635e0978383b2540 = L.circleMarker(
+                [30.11, -97.31],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.35, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_08846f3e4b49ea02604d38bfd999a184 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_069251e094ecdfeb489ab57e95c3b635 = $(`<div id="html_069251e094ecdfeb489ab57e95c3b635" style="width: 100.0%; height: 100.0%;">Bastrop Population Growth: 22.7%</div>`)[0];
+                popup_08846f3e4b49ea02604d38bfd999a184.setContent(html_069251e094ecdfeb489ab57e95c3b635);
+            
+        
+
+        circle_marker_b452d225a4ccb6db635e0978383b2540.bindPopup(popup_08846f3e4b49ea02604d38bfd999a184)
+        ;
+
+        
+    
+    
+            var circle_marker_66d1b1ab249aaaf82b85f59f3bf9d88d = L.circleMarker(
+                [29.17, -96.95],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_81b29d38151c1fe9e7458474cb202fe4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9077cbf4d15c69036f3a72f47dae1680 = $(`<div id="html_9077cbf4d15c69036f3a72f47dae1680" style="width: 100.0%; height: 100.0%;">Bloomington Population Growth: nan%</div>`)[0];
+                popup_81b29d38151c1fe9e7458474cb202fe4.setContent(html_9077cbf4d15c69036f3a72f47dae1680);
+            
+        
+
+        circle_marker_66d1b1ab249aaaf82b85f59f3bf9d88d.bindPopup(popup_81b29d38151c1fe9e7458474cb202fe4)
+        ;
+
+        
+    
+    
+            var circle_marker_b3d94cd4116c84d711e17043475809bf = L.circleMarker(
+                [32.21, -95.47],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.35, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_74a0a0a2e88fc241eb148a8f068526e1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4df840a3d0b6cf74b5093a355f7a1560 = $(`<div id="html_4df840a3d0b6cf74b5093a355f7a1560" style="width: 100.0%; height: 100.0%;">Bullard Population Growth: 20.7%</div>`)[0];
+                popup_74a0a0a2e88fc241eb148a8f068526e1.setContent(html_4df840a3d0b6cf74b5093a355f7a1560);
+            
+        
+
+        circle_marker_b3d94cd4116c84d711e17043475809bf.bindPopup(popup_74a0a0a2e88fc241eb148a8f068526e1)
+        ;
+
+        
+    
+    
+            var circle_marker_fc4cd089354b30f7eb573a33771d8991 = L.circleMarker(
+                [30.35, -95.07],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 17.15, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_dda1336f594faee98a0ba45af0e48770 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a7741491c2aee02cabb17c5672f3cb6 = $(`<div id="html_6a7741491c2aee02cabb17c5672f3cb6" style="width: 100.0%; height: 100.0%;">Cleveland Population Growth: 24.3%</div>`)[0];
+                popup_dda1336f594faee98a0ba45af0e48770.setContent(html_6a7741491c2aee02cabb17c5672f3cb6);
+            
+        
+
+        circle_marker_fc4cd089354b30f7eb573a33771d8991.bindPopup(popup_dda1336f594faee98a0ba45af0e48770)
+        ;
+
+        
+    
+    
+            var circle_marker_8d86539a989c122914e9034a6816e3ab = L.circleMarker(
+                [32.92, -94.64],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.65, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_73d972b8126e4003f305cd64d6e5d2ee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3c338260692637e014d50ea141f709c7 = $(`<div id="html_3c338260692637e014d50ea141f709c7" style="width: 100.0%; height: 100.0%;">Daingerfield Population Growth: -0.7%</div>`)[0];
+                popup_73d972b8126e4003f305cd64d6e5d2ee.setContent(html_3c338260692637e014d50ea141f709c7);
+            
+        
+
+        circle_marker_8d86539a989c122914e9034a6816e3ab.bindPopup(popup_73d972b8126e4003f305cd64d6e5d2ee)
+        ;
+
+        
+    
+    
+            var circle_marker_9fcf68e133ff0ba94b5f23db526f1a1a = L.circleMarker(
+                [30.06, -94.9],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.0, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_39032d289651bc5248175676bf269d57 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aea806ee85304d487e3d9901ffa19934 = $(`<div id="html_aea806ee85304d487e3d9901ffa19934" style="width: 100.0%; height: 100.0%;">Dayton Population Growth: 8.0%</div>`)[0];
+                popup_39032d289651bc5248175676bf269d57.setContent(html_aea806ee85304d487e3d9901ffa19934);
+            
+        
+
+        circle_marker_9fcf68e133ff0ba94b5f23db526f1a1a.bindPopup(popup_39032d289651bc5248175676bf269d57)
+        ;
+
+        
+    
+    
+            var circle_marker_dc778a97808d167e2876b8995fa8cd40 = L.circleMarker(
+                [31.05, -94.95],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.1, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_8818df996e35e5995510202e3590adb6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61a2e9a187febcdc87ca2b302c281bbe = $(`<div id="html_61a2e9a187febcdc87ca2b302c281bbe" style="width: 100.0%; height: 100.0%;">Diboll Population Growth: 2.2%</div>`)[0];
+                popup_8818df996e35e5995510202e3590adb6.setContent(html_61a2e9a187febcdc87ca2b302c281bbe);
+            
+        
+
+        circle_marker_dc778a97808d167e2876b8995fa8cd40.bindPopup(popup_8818df996e35e5995510202e3590adb6)
+        ;
+
+        
+    
+    
+            var circle_marker_e4b72bfb0d21fbd1caf8ee1f36d4ac8a = L.circleMarker(
+                [32.73, -94.94],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.45, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_b6b9f657ef34045190347a95b94a572d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_369d763b112da6d7c7cb5d9135c52455 = $(`<div id="html_369d763b112da6d7c7cb5d9135c52455" style="width: 100.0%; height: 100.0%;">Gilmer Population Growth: 6.9%</div>`)[0];
+                popup_b6b9f657ef34045190347a95b94a572d.setContent(html_369d763b112da6d7c7cb5d9135c52455);
+            
+        
+
+        circle_marker_e4b72bfb0d21fbd1caf8ee1f36d4ac8a.bindPopup(popup_b6b9f657ef34045190347a95b94a572d)
+        ;
+
+        
+    
+    
+            var circle_marker_d34a457386f3e4d4a8b8ff3a332554da = L.circleMarker(
+                [32.48, -94.92],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.05, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_940cc40b5d6f4c6a43fd8e3026c3e096 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_214fea6631ac1c306fe767b1644e60ee = $(`<div id="html_214fea6631ac1c306fe767b1644e60ee" style="width: 100.0%; height: 100.0%;">Gladewater Population Growth: 2.1%</div>`)[0];
+                popup_940cc40b5d6f4c6a43fd8e3026c3e096.setContent(html_214fea6631ac1c306fe767b1644e60ee);
+            
+        
+
+        circle_marker_d34a457386f3e4d4a8b8ff3a332554da.bindPopup(popup_940cc40b5d6f4c6a43fd8e3026c3e096)
+        ;
+
+        
+    
+    
+            var circle_marker_1378a6a8a7b2fb71cc2116da0bf8c7c0 = L.circleMarker(
+                [32.73, -95.68],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.35, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_c796929a4b4a5463e60306585fb16909 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_529ad0550d7a7790fa07566055487de3 = $(`<div id="html_529ad0550d7a7790fa07566055487de3" style="width: 100.0%; height: 100.0%;">Grand Saline Population Growth: 0.7%</div>`)[0];
+                popup_c796929a4b4a5463e60306585fb16909.setContent(html_529ad0550d7a7790fa07566055487de3);
+            
+        
+
+        circle_marker_1378a6a8a7b2fb71cc2116da0bf8c7c0.bindPopup(popup_c796929a4b4a5463e60306585fb16909)
+        ;
+
+        
+    
+    
+            var circle_marker_b1390878bf7ecb4e3b5f6812f8e2dae7 = L.circleMarker(
+                [31.55, -95.48],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.9, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_cea5faa1cec40805ae614823da772c5c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9acf3cab537991dd9a324c94b0d3a542 = $(`<div id="html_9acf3cab537991dd9a324c94b0d3a542" style="width: 100.0%; height: 100.0%;">Grapeland Population Growth: 3.8%</div>`)[0];
+                popup_cea5faa1cec40805ae614823da772c5c.setContent(html_9acf3cab537991dd9a324c94b0d3a542);
+            
+        
+
+        circle_marker_b1390878bf7ecb4e3b5f6812f8e2dae7.bindPopup(popup_cea5faa1cec40805ae614823da772c5c)
+        ;
+
+        
+    
+    
+            var circle_marker_98b793702d88d7e8bddf330d7bef09e5 = L.circleMarker(
+                [32.4, -95.44],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.25, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_b401f2c3f0829776f53a4e7f66cb3c25 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c7be537fe8308a369b73c0d5643853be = $(`<div id="html_c7be537fe8308a369b73c0d5643853be" style="width: 100.0%; height: 100.0%;">Hawkins Population Growth: 4.5%</div>`)[0];
+                popup_b401f2c3f0829776f53a4e7f66cb3c25.setContent(html_c7be537fe8308a369b73c0d5643853be);
+            
+        
+
+        circle_marker_98b793702d88d7e8bddf330d7bef09e5.bindPopup(popup_b401f2c3f0829776f53a4e7f66cb3c25)
+        ;
+
+        
+    
+    
+            var circle_marker_3cfa201673195b1a87adee78479415a9 = L.circleMarker(
+                [32.15, -94.79],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.9, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_f31abf36334f21a27a70df38d199c1df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6d83e64edac747c056d546ba4bb850f7 = $(`<div id="html_6d83e64edac747c056d546ba4bb850f7" style="width: 100.0%; height: 100.0%;">Henderson Population Growth: -0.2%</div>`)[0];
+                popup_f31abf36334f21a27a70df38d199c1df.setContent(html_6d83e64edac747c056d546ba4bb850f7);
+            
+        
+
+        circle_marker_3cfa201673195b1a87adee78479415a9.bindPopup(popup_f31abf36334f21a27a70df38d199c1df)
+        ;
+
+        
+    
+    
+            var circle_marker_e80e2a8c00194ff5480183cfda70139b = L.circleMarker(
+                [32.96, -94.42],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.3, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_f860f5273ce92b7dbed838a9862b17d1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_367b7e11c1004aba4323ba412c4b0356 = $(`<div id="html_367b7e11c1004aba4323ba412c4b0356" style="width: 100.0%; height: 100.0%;">Hughes Springs Population Growth: -1.4%</div>`)[0];
+                popup_f860f5273ce92b7dbed838a9862b17d1.setContent(html_367b7e11c1004aba4323ba412c4b0356);
+            
+        
+
+        circle_marker_e80e2a8c00194ff5480183cfda70139b.bindPopup(popup_f860f5273ce92b7dbed838a9862b17d1)
+        ;
+
+        
+    
+    
+            var circle_marker_cc0c2ad1c17381def01a771286056b37 = L.circleMarker(
+                [30.72, -95.55],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.3, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_3d3d4f4c1e9cce6f84345c87becc4afa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f18322538047d1ebe01bae942df106f1 = $(`<div id="html_f18322538047d1ebe01bae942df106f1" style="width: 100.0%; height: 100.0%;">Huntsville Population Growth: 4.6%</div>`)[0];
+                popup_3d3d4f4c1e9cce6f84345c87becc4afa.setContent(html_f18322538047d1ebe01bae942df106f1);
+            
+        
+
+        circle_marker_cc0c2ad1c17381def01a771286056b37.bindPopup(popup_3d3d4f4c1e9cce6f84345c87becc4afa)
+        ;
+
+        
+    
+    
+            var circle_marker_72825919e981bb412d517b7f7ca38704 = L.circleMarker(
+                [31.96, -95.27],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.05, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_bb1144a3c498e492cd99e04e3543e97b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dda04b7ce2e6b1888f374b2078a85ddd = $(`<div id="html_dda04b7ce2e6b1888f374b2078a85ddd" style="width: 100.0%; height: 100.0%;">Jacksonville Population Growth: 4.1%</div>`)[0];
+                popup_bb1144a3c498e492cd99e04e3543e97b.setContent(html_dda04b7ce2e6b1888f374b2078a85ddd);
+            
+        
+
+        circle_marker_72825919e981bb412d517b7f7ca38704.bindPopup(popup_bb1144a3c498e492cd99e04e3543e97b)
+        ;
+
+        
+    
+    
+            var circle_marker_b3c6a930235eda42e948348ce84e64e5 = L.circleMarker(
+                [32.54, -95.34],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.3, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_e6588ef44217263d5e497f8bc05d74ac = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c9b3b24494c5bf8bb041cadb7daefaba = $(`<div id="html_c9b3b24494c5bf8bb041cadb7daefaba" style="width: 100.0%; height: 100.0%;">Lindale Population Growth: 14.6%</div>`)[0];
+                popup_e6588ef44217263d5e497f8bc05d74ac.setContent(html_c9b3b24494c5bf8bb041cadb7daefaba);
+            
+        
+
+        circle_marker_b3c6a930235eda42e948348ce84e64e5.bindPopup(popup_e6588ef44217263d5e497f8bc05d74ac)
+        ;
+
+        
+    
+    
+            var circle_marker_9f957499b837663f2632f84e104092c3 = L.circleMarker(
+                [30.71, -94.94],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.1, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_151081e86a1e68752afd5d193c539777 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70fa9a8423f6969d074395c1bbfb42f8 = $(`<div id="html_70fa9a8423f6969d074395c1bbfb42f8" style="width: 100.0%; height: 100.0%;">Livingston Population Growth: 2.2%</div>`)[0];
+                popup_151081e86a1e68752afd5d193c539777.setContent(html_70fa9a8423f6969d074395c1bbfb42f8);
+            
+        
+
+        circle_marker_9f957499b837663f2632f84e104092c3.bindPopup(popup_151081e86a1e68752afd5d193c539777)
+        ;
+
+        
+    
+    
+            var circle_marker_702ef40184cb2bfcf885f4db2e2e68e3 = L.circleMarker(
+                [31.34, -94.73],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.2, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_dcf2dcf37dfd23a6f6a7a0f9fa1e8809 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_446c2b8a6137efbc3fb29aec191c629f = $(`<div id="html_446c2b8a6137efbc3fb29aec191c629f" style="width: 100.0%; height: 100.0%;">Lufkin Population Growth: 0.4%</div>`)[0];
+                popup_dcf2dcf37dfd23a6f6a7a0f9fa1e8809.setContent(html_446c2b8a6137efbc3fb29aec191c629f);
+            
+        
+
+        circle_marker_702ef40184cb2bfcf885f4db2e2e68e3.bindPopup(popup_dcf2dcf37dfd23a6f6a7a0f9fa1e8809)
+        ;
+
+        
+    
+    
+            var circle_marker_c1f3a7bcd674688515c41059fab77860 = L.circleMarker(
+                [32.66, -95.49],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.65, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_9eee79eec425af63c37633959dd11648 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_283cf36eb89696714dc4880e568042bf = $(`<div id="html_283cf36eb89696714dc4880e568042bf" style="width: 100.0%; height: 100.0%;">Mineola Population Growth: 7.3%</div>`)[0];
+                popup_9eee79eec425af63c37633959dd11648.setContent(html_283cf36eb89696714dc4880e568042bf);
+            
+        
+
+        circle_marker_c1f3a7bcd674688515c41059fab77860.bindPopup(popup_9eee79eec425af63c37633959dd11648)
+        ;
+
+        
+    
+    
+            var circle_marker_bc5586a59e31b5a3aa2e52a0712feb82 = L.circleMarker(
+                [31.6, -94.65],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.45, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_3bfcaa495e7064fd1663a55d0f5ec4df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ad675f851e57806848ef99e1880fa83d = $(`<div id="html_ad675f851e57806848ef99e1880fa83d" style="width: 100.0%; height: 100.0%;">Nacogdoches Population Growth: -1.1%</div>`)[0];
+                popup_3bfcaa495e7064fd1663a55d0f5ec4df.setContent(html_ad675f851e57806848ef99e1880fa83d);
+            
+        
+
+        circle_marker_bc5586a59e31b5a3aa2e52a0712feb82.bindPopup(popup_3bfcaa495e7064fd1663a55d0f5ec4df)
+        ;
+
+        
+    
+    
+            var circle_marker_dfa106b87e9919c3797f2ca7bc61e2cc = L.circleMarker(
+                [32.24, -94.57],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.0, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_f2b2d8752e5996c9975a8e6c2fe7b928 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_df38dcebc8e17ea94de13d1743e8ef21 = $(`<div id="html_df38dcebc8e17ea94de13d1743e8ef21" style="width: 100.0%; height: 100.0%;">Overton Population Growth: -0.0%</div>`)[0];
+                popup_f2b2d8752e5996c9975a8e6c2fe7b928.setContent(html_df38dcebc8e17ea94de13d1743e8ef21);
+            
+        
+
+        circle_marker_dfa106b87e9919c3797f2ca7bc61e2cc.bindPopup(popup_f2b2d8752e5996c9975a8e6c2fe7b928)
+        ;
+
+        
+    
+    
+            var circle_marker_0151778c964b29952b69b7131f87a546 = L.circleMarker(
+                [32.95, -94.95],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.55, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_d446ce6005cb40e20e06f3dfac3ac89e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f2399aad16710af00f16a472d03a6ec8 = $(`<div id="html_f2399aad16710af00f16a472d03a6ec8" style="width: 100.0%; height: 100.0%;">Pittsburg Population Growth: 3.1%</div>`)[0];
+                popup_d446ce6005cb40e20e06f3dfac3ac89e.setContent(html_f2399aad16710af00f16a472d03a6ec8);
+            
+        
+
+        circle_marker_0151778c964b29952b69b7131f87a546.bindPopup(popup_d446ce6005cb40e20e06f3dfac3ac89e)
+        ;
+
+        
+    
+    
+            var circle_marker_c5ce86901b0e50e3435db4d7313a3608 = L.circleMarker(
+                [32.27, -94.87],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.4, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_0119b9d5d4a1fca4f9332bd02cd9b32d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_171e2df629557af8506944f46404e484 = $(`<div id="html_171e2df629557af8506944f46404e484" style="width: 100.0%; height: 100.0%;">Rusk Population Growth: 0.8%</div>`)[0];
+                popup_0119b9d5d4a1fca4f9332bd02cd9b32d.setContent(html_171e2df629557af8506944f46404e484);
+            
+        
+
+        circle_marker_c5ce86901b0e50e3435db4d7313a3608.bindPopup(popup_0119b9d5d4a1fca4f9332bd02cd9b32d)
+        ;
+
+        
+    
+    
+            var circle_marker_a2522773fdf2a25feba10329acd26061 = L.circleMarker(
+                [31.53, -94.07],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.0, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_e365c3bc7edf62e573994ce1cc2ea79f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_55a30ec404991e3cceb564f212c24f7b = $(`<div id="html_55a30ec404991e3cceb564f212c24f7b" style="width: 100.0%; height: 100.0%;">San Augustine Population Growth: -2.0%</div>`)[0];
+                popup_e365c3bc7edf62e573994ce1cc2ea79f.setContent(html_55a30ec404991e3cceb564f212c24f7b);
+            
+        
+
+        circle_marker_a2522773fdf2a25feba10329acd26061.bindPopup(popup_e365c3bc7edf62e573994ce1cc2ea79f)
+        ;
+
+        
+    
+    
+            var circle_marker_7ab2277cd82bbe26ca921ece0807c9e8 = L.circleMarker(
+                [30.67, -94.99],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.95, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_049665b5337b840418105756f7828848 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c319d9c693e446de77174ed338bb1740 = $(`<div id="html_c319d9c693e446de77174ed338bb1740" style="width: 100.0%; height: 100.0%;">Shepherd Population Growth: 1.9%</div>`)[0];
+                popup_049665b5337b840418105756f7828848.setContent(html_c319d9c693e446de77174ed338bb1740);
+            
+        
+
+        circle_marker_7ab2277cd82bbe26ca921ece0807c9e8.bindPopup(popup_049665b5337b840418105756f7828848)
+        ;
+
+        
+    
+    
+            var circle_marker_656d23dd463415e0e8e967d93808f54d = L.circleMarker(
+                [30.91, -95.35],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.25, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_7c3b17d162c666f3d65a3f2e62188f53 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_45cae5d5e56184c57eaf9f7eb291979f = $(`<div id="html_45cae5d5e56184c57eaf9f7eb291979f" style="width: 100.0%; height: 100.0%;">Trinity Population Growth: 6.5%</div>`)[0];
+                popup_7c3b17d162c666f3d65a3f2e62188f53.setContent(html_45cae5d5e56184c57eaf9f7eb291979f);
+            
+        
+
+        circle_marker_656d23dd463415e0e8e967d93808f54d.bindPopup(popup_7c3b17d162c666f3d65a3f2e62188f53)
+        ;
+
+        
+    
+    
+            var circle_marker_003f1643b446c883483c448f16f8ef9c = L.circleMarker(
+                [32.23, -95.01],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.95, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_7074fa65852f2eef8611d674728131eb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c41b21dea3e44b959e63efdf6ba44acc = $(`<div id="html_c41b21dea3e44b959e63efdf6ba44acc" style="width: 100.0%; height: 100.0%;">Troup Population Growth: 5.9%</div>`)[0];
+                popup_7074fa65852f2eef8611d674728131eb.setContent(html_c41b21dea3e44b959e63efdf6ba44acc);
+            
+        
+
+        circle_marker_003f1643b446c883483c448f16f8ef9c.bindPopup(popup_7074fa65852f2eef8611d674728131eb)
+        ;
+
+        
+    
+    
+            var circle_marker_f5c58b55611d70c317f14126addd1f8b = L.circleMarker(
+                [32.35, -95.3],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.25, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_cc39b6536c3ed130d2a3ed2fa1bd9a01 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2cb2cfae5be402f2eacf05b13dcb342e = $(`<div id="html_2cb2cfae5be402f2eacf05b13dcb342e" style="width: 100.0%; height: 100.0%;">Tyler Population Growth: 4.5%</div>`)[0];
+                popup_cc39b6536c3ed130d2a3ed2fa1bd9a01.setContent(html_2cb2cfae5be402f2eacf05b13dcb342e);
+            
+        
+
+        circle_marker_f5c58b55611d70c317f14126addd1f8b.bindPopup(popup_cc39b6536c3ed130d2a3ed2fa1bd9a01)
+        ;
+
+        
+    
+    
+            var circle_marker_47cdc745f367c5c06cfafe46e5bd96f8 = L.circleMarker(
+                [28.8, -96.99],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.3, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_1df09de190a5b8637ffebdca6919a4a0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_72de59f7dee8d68b31fd1b00ca732215 = $(`<div id="html_72de59f7dee8d68b31fd1b00ca732215" style="width: 100.0%; height: 100.0%;">Victoria Population Growth: 2.6%</div>`)[0];
+                popup_1df09de190a5b8637ffebdca6919a4a0.setContent(html_72de59f7dee8d68b31fd1b00ca732215);
+            
+        
+
+        circle_marker_47cdc745f367c5c06cfafe46e5bd96f8.bindPopup(popup_1df09de190a5b8637ffebdca6919a4a0)
+        ;
+
+        
+    
+    
+            var circle_marker_57631d08c889756609380da2cf10a770 = L.circleMarker(
+                [32.95, -95.29],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.65, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_df994d692fb19a7e6fb54c1b6cf90cab = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d4a5fe9c1fecc11fba8839cd96636a17 = $(`<div id="html_d4a5fe9c1fecc11fba8839cd96636a17" style="width: 100.0%; height: 100.0%;">Winnsboro Population Growth: 1.3%</div>`)[0];
+                popup_df994d692fb19a7e6fb54c1b6cf90cab.setContent(html_d4a5fe9c1fecc11fba8839cd96636a17);
+            
+        
+
+        circle_marker_57631d08c889756609380da2cf10a770.bindPopup(popup_df994d692fb19a7e6fb54c1b6cf90cab)
+        ;
+
+        
+    
+    
+            var circle_marker_69e9df0c30e1f1892516872bdf38ef7a = L.circleMarker(
+                [29.74, -94.97],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.2, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_e2bc7f8a15d2c27e838201166e895a9b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0123b1237782c71fcac0fb1e528aa767 = $(`<div id="html_0123b1237782c71fcac0fb1e528aa767" style="width: 100.0%; height: 100.0%;">Baytown Population Growth: -1.6%</div>`)[0];
+                popup_e2bc7f8a15d2c27e838201166e895a9b.setContent(html_0123b1237782c71fcac0fb1e528aa767);
+            
+        
+
+        circle_marker_69e9df0c30e1f1892516872bdf38ef7a.bindPopup(popup_e2bc7f8a15d2c27e838201166e895a9b)
+        ;
+
+        
+    
+    
+            var circle_marker_44edce5f03dacae87157128f6d814790 = L.circleMarker(
+                [30.31, -95.46],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.65, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_dc03f84447d97346fc5d9735a53c23b0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_df1578638a970fec2b0fdeb1d4985d1b = $(`<div id="html_df1578638a970fec2b0fdeb1d4985d1b" style="width: 100.0%; height: 100.0%;">Conroe Population Growth: 21.3%</div>`)[0];
+                popup_dc03f84447d97346fc5d9735a53c23b0.setContent(html_df1578638a970fec2b0fdeb1d4985d1b);
+            
+        
+
+        circle_marker_44edce5f03dacae87157128f6d814790.bindPopup(popup_dc03f84447d97346fc5d9735a53c23b0)
+        ;
+
+        
+    
+    
+            var circle_marker_62b1f4bee33400db33add7a9d11308ea = L.circleMarker(
+                [30.41, -95.33],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.35, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_e0ba497981c45e6a710749e5ccf73b25 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f96320dbc330ce205c70a821d46f0813 = $(`<div id="html_f96320dbc330ce205c70a821d46f0813" style="width: 100.0%; height: 100.0%;">New Waverly Population Growth: 4.7%</div>`)[0];
+                popup_e0ba497981c45e6a710749e5ccf73b25.setContent(html_f96320dbc330ce205c70a821d46f0813);
+            
+        
+
+        circle_marker_62b1f4bee33400db33add7a9d11308ea.bindPopup(popup_e0ba497981c45e6a710749e5ccf73b25)
+        ;
+
+        
+    
+    
+            var circle_marker_e4cface4960cc98d9be4f68b6d3ec83e = L.circleMarker(
+                [30.5, -95.52],
+                {"bubblingMouseEvents": true, "color": "yellow", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "yellow", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.75, "stroke": true, "weight": 3}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+        var popup_bbf0d17aa75deae9240a87b3fd821466 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bbe51578e6f3de7042107f7b28ed183b = $(`<div id="html_bbe51578e6f3de7042107f7b28ed183b" style="width: 100.0%; height: 100.0%;">Willis Population Growth: 7.5%</div>`)[0];
+                popup_bbf0d17aa75deae9240a87b3fd821466.setContent(html_bbe51578e6f3de7042107f7b28ed183b);
+            
+        
+
+        circle_marker_e4cface4960cc98d9be4f68b6d3ec83e.bindPopup(popup_bbf0d17aa75deae9240a87b3fd821466)
+        ;
+
+        
+    
+    
+            var heat_map_caa98beb694c8e2b91072428cddb36f6 = L.heatLayer(
+                [[32.43, -95.13, 979.0], [30.11, -97.31, 11892.0], [32.21, -95.47, 4005.0], [30.35, -95.07, 9289.0], [32.92, -94.64, 2505.0], [30.06, -94.9, 9476.0], [31.05, -94.95, 4555.0], [32.73, -94.94, 5179.0], [32.48, -94.92, 6262.0], [32.73, -95.68, 3130.0], [31.55, -95.48, 1520.0], [32.4, -95.44, 1331.0], [32.15, -94.79, 13243.0], [32.96, -94.42, 1553.0], [30.72, -95.55, 48069.0], [31.96, -95.27, 14572.0], [32.54, -95.34, 6941.0], [30.71, -94.94, 5766.0], [31.34, -94.73, 34285.0], [32.66, -95.49, 5174.0], [31.6, -94.65, 31793.0], [32.24, -94.57, 2274.0], [32.95, -94.95, 4471.0], [32.27, -94.87, 5329.0], [31.53, -94.07, 1881.0], [30.67, -94.99, 2144.0], [30.91, -95.35, 2495.0], [32.23, -95.01, 2125.0], [32.35, -95.3, 110734.0], [28.8, -96.99, 67234.0], [32.95, -95.29, 3500.0], [29.74, -94.97, 82378.0], [30.31, -95.46, 109130.0], [30.41, -95.33, 957.0], [30.5, -95.52, 6916.0]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 6,
+  "radius": 25,
+  "blur": 15,
+}
+            );
+        
+    
+            heat_map_caa98beb694c8e2b91072428cddb36f6.addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+            var heat_map_9a14de96c65f7fd4330c36472610ba68 = L.heatLayer(
+                [[32.35, -95.3, 110734.0], [30.31, -95.46, 109130.0], [29.74, -94.97, 82378.0], [28.8, -96.99, 67234.0], [30.72, -95.55, 48069.0], [31.34, -94.73, 34285.0], [31.6, -94.65, 31793.0], [31.96, -95.27, 14572.0], [32.15, -94.79, 13243.0], [30.11, -97.31, 11892.0]],
+                {
+  "minOpacity": 0.6,
+  "maxZoom": 6,
+  "radius": 40,
+  "blur": 20,
+  "gradient": {
+  0.2: "blue",
+  0.4: "lime",
+  0.6: "orange",
+  1: "red",
+},
+}
+            );
+        
+    
+            heat_map_9a14de96c65f7fd4330c36472610ba68.addTo(map_21431c6fcd525543818169b8cfbfa35e);
+        
+    
+            var layer_control_80aea3f46c439bc5650830ab7dc8e986_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_0713b12453c97696f78aac6e1e8530f5,
+                },
+                overlays :  {
+                    "All Cities Heatmap" : heat_map_caa98beb694c8e2b91072428cddb36f6,
+                    "Top 10 Populated Cities" : heat_map_9a14de96c65f7fd4330c36472610ba68,
+                },
+            };
+            let layer_control_80aea3f46c439bc5650830ab7dc8e986 = L.control.layers(
+                layer_control_80aea3f46c439bc5650830ab7dc8e986_layers.base_layers,
+                layer_control_80aea3f46c439bc5650830ab7dc8e986_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_21431c6fcd525543818169b8cfbfa35e);
+
+        
+</script>
+</html>
