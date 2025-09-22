@@ -17,5 +17,5 @@ This project analyzes overlapping service areas between **CenterPoint Energy** (
 ## Files
 - `index.html` → Interactive map
 - `texas_both_services_data.csv` → Clean dataset
-- `top10_growth.png` → Graph of fastest growing cities
+- `population_growth_top10.png` → Graph of fastest growing cities
 - `top10_population_2024.png` → Graph of most populated cities
