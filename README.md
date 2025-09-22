@@ -8,7 +8,7 @@ This project analyzes overlapping service areas between **CenterPoint Energy** (
 - Visual graphs of fastest-growing and most populated cities.
 
 ## Live Demo
-👉 [View Interactive Map](https://<username>.github.io/<repo-name>/)
+👉 [View Interactive Map](https://mdam182.github.io/texas-pop-growth-map/)
 
 ## Insights
 - Growth hotspots: (insert findings from your graph/map).
